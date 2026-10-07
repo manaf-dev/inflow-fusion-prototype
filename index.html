@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#fff;color:#0A192F;font-family:'Inter',-apple-system,sans-serif}a{color:#4F46E5;text-decoration:none}a:hover{color:#0A192F}html{scroll-behavior:smooth}@media(max-width:1023px){.sec-x{padding-top:72px!important;padding-bottom:72px!important}.ft-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:40px 32px!important}.ft-brand{grid-column:1/-1}.book-grid{gap:40px!important}.book-sec{padding-top:48px!important}.about-cards{order:2}.hero-sec{padding-top:40px!important}}@media(min-width:641px){.nav-panel{display:none!important}}@media(max-width:640px){.sec-x{padding:56px 16px!important}.ft{padding:48px 16px 24px!important}.ft-grid{grid-template-columns:minmax(0,1fr)!important;gap:32px!important;margin-bottom:32px!important}.book-sec{padding:32px 16px 56px!important}.book-form{padding:24px 20px!important;border-radius:20px!important}.book-done{padding:32px 16px!important}.book-card{padding:32px 20px!important}.book-card h1{font-size:28px!important}.hero-sec{padding:24px 16px 56px!important}.hero-grid{gap:32px!important}.hero-visual{display:none!important}.nav-in{padding:0 16px!important;min-height:64px!important;flex-wrap:nowrap!important}.nav-links{display:none!important}.nav-logo{font-size:21px!important}.nav-burger{display:flex!important}}.nav-burger{display:none}</style>
+</helmet>
+<div style="min-height:100vh;background:#fff;color:#0A192F;font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6">
+
+<nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(10,25,47,0.1)">
+<div class="nav-in" style="max-width:1280px;margin:0 auto;padding:0 32px;min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<a class="nav-logo" href="#" onClick="{{ goHome }}" style="white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:1px;font-family:'Inter',-apple-system,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.03em;color:#0A192F">Infl<svg width="22" height="22" viewBox="0 0 48 48" style="flex-shrink:0;margin-top:4px"><circle cx="24" cy="24" r="17" fill="none" stroke="#0A192F" stroke-width="8"></circle><circle cx="24" cy="24" r="5" fill="#4F46E5"></circle></svg>w Fusion</a>
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div class="nav-links" style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+<a class="nav-link" href="#about" style="color:#0A192F" style-hover="color:#4F46E5">About</a>
+<a class="nav-link" href="#services" style="color:#0A192F" style-hover="color:#4F46E5">Services</a>
+<button class="nav-cta" onClick="{{ goBook }}" style="font:inherit;font-weight:500;white-space:nowrap;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:12px 24px;border-radius:10px;box-shadow:0 10px 15px -3px rgba(79,70,229,0.25)" style-hover="background:#4338CA">Book a Consultation</button>
+</div>
+<button class="nav-burger" aria-label="Menu" onClick="{{ toggleMenu }}" style="display:none;width:44px;height:44px;border:1px solid rgba(10,25,47,0.15);background:#fff;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0"><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span></button>
+</sc-if>
+</div>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div class="nav-panel" style="position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;gap:4px;padding:8px 16px 20px;border-bottom:1px solid rgba(10,25,47,0.1);background:#fff;box-shadow:0 20px 30px -10px rgba(10,25,47,0.15)"><a href="#about" onClick="{{ closeMenu }}" style="color:#0A192F;font-weight:500;padding:14px 8px">About</a><a href="#services" onClick="{{ closeMenu }}" style="color:#0A192F;font-weight:500;padding:14px 8px;border-top:1px solid rgba(10,25,47,0.08)">Services</a><button onClick="{{ goBook }}" style="font:inherit;font-weight:500;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:14px 24px;border-radius:10px;margin-top:8px">Book a Consultation</button></div>
+</sc-if>
+</nav>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section class="hero-sec" style="padding:96px 32px 88px">
+<div class="hero-grid" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:32px;align-items:flex-start">
+<span style="white-space:nowrap;flex-shrink:0;padding:8px 16px;background:rgba(79,70,229,0.05);border:1px solid rgba(79,70,229,0.2);border-radius:999px;color:#4F46E5;font-size:14px;font-weight:600">Data &amp; AI Consultancy</span>
+<h1 style="margin:0;font-weight:900;font-size:clamp(40px,5.6vw,64px);line-height:1.08;letter-spacing:-0.03em;text-wrap:balance">You know your data is holding you back. <span style="color:#4F46E5">We will fix it.</span></h1>
+<p style="margin:0;font-size:20px;line-height:1.6;color:rgba(10,25,47,0.7);max-width:560px;text-wrap:pretty">We help businesses make better decisions, eliminate manual inefficiencies, and build the data infrastructure they need to grow, without the overhead of a large agency or the generic output of a software platform.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<button onClick="{{ goBook }}" style="font:inherit;font-weight:500;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:16px 32px;border-radius:10px;display:flex;align-items:center;gap:8px;box-shadow:0 20px 25px -5px rgba(79,70,229,0.25)" style-hover="background:#4338CA">Book a Consultation<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
+<a href="#services" style="font-weight:500;border:2px solid #0A192F;color:#0A192F;padding:14px 32px;border-radius:10px" style-hover="background:#0A192F;color:#fff">See Our Solutions</a>
+</div></div>
+
+<div class="hero-visual" style="position:relative;min-width:0">
+<div style="position:absolute;inset:8% 4%;background:rgba(79,70,229,0.18);border-radius:24px;filter:blur(48px)"></div>
+<div style="position:relative;background:#0A192F;border-radius:20px;box-shadow:0 25px 50px -12px rgba(10,25,47,0.5);overflow:hidden;color:#fff">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.1)">
+<div style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px"><svg width="20" height="20" viewBox="0 0 48 48"><circle cx="24" cy="24" r="17" fill="none" stroke="#fff" stroke-width="8"></circle><circle cx="24" cy="24" r="5" fill="#00E5FF"></circle></svg>Operations overview</div>
+<span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#00E5FF;border:1px solid rgba(0,229,255,0.4);border-radius:999px;padding:4px 10px"><span style="width:6px;height:6px;border-radius:50%;background:#00E5FF"></span>Live</span>
+</div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="3">
+<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:14px;min-width:0">
+<div style="font-size:12px;color:rgba(255,255,255,0.75)">{{ k.label }}</div>
+<div style="font-size:24px;font-weight:800;letter-spacing:-0.03em;line-height:1.2">{{ k.value }}</div>
+<svg viewBox="0 0 100 28" preserveAspectRatio="none" style="width:100%;height:28px;display:block;margin:6px 0 4px"><polyline points="{{ k.spark }}" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg>
+<div style="font-size:12px;font-weight:600;color:#00E5FF">{{ k.delta }}</div>
+</div>
+</sc-for>
+</div>
+<div style="border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px">
+<div style="font-size:13px;font-weight:600;margin-bottom:8px">Revenue vs target</div>
+<svg viewBox="0 0 420 150" style="width:100%;height:auto;display:block">
+<g stroke="rgba(255,255,255,0.1)"><line x1="0" y1="20" x2="420" y2="20"></line><line x1="0" y1="60" x2="420" y2="60"></line><line x1="0" y1="100" x2="420" y2="100"></line></g>
+<path d="M0 118 L60 108 L120 112 L180 86 L240 90 L300 62 L360 48 L400 30 L400 130 L0 130Z" fill="rgba(0,229,255,0.1)"></path>
+<line x1="0" y1="70" x2="420" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-dasharray="5 5"></line>
+<polyline points="0,118 60,108 120,112 180,86 240,90 300,62 360,48 400,30" fill="none" stroke="#00E5FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+<circle cx="400" cy="30" r="9" fill="rgba(0,229,255,0.25)"></circle><circle cx="400" cy="30" r="5" fill="#00E5FF" stroke="#0A192F" stroke-width="2"></circle>
+<g font-size="11" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif"><text x="0" y="146">Wk 1</text><text x="130" y="146">Wk 2</text><text x="250" y="146">Wk 3</text><text x="370" y="146">Wk 4</text></g>
+</svg></div>
+<div style="display:flex;flex-direction:column;gap:8px;border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600">Hours saved this month</span><span style="color:#00E5FF;font-weight:700">46 / 60 hrs</span></div>
+<div style="height:8px;border-radius:4px;background:rgba(255,255,255,0.12)"><div style="width:77%;height:100%;border-radius:4px;background:#00E5FF"></div></div>
+</div>
+</div></div></div>
+</div></section>
+
+<section id="about" class="sec-x" style="padding:96px 32px;background:#F9FAFB">
+<div style="max-width:1280px;margin:0 auto">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center">
+<div class="about-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px">
+<sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+<div style="background:#fff;padding:24px;border-radius:16px;border:1px solid rgba(10,25,47,0.1)" style-hover="border-color:rgba(79,70,229,0.3);box-shadow:0 20px 25px -5px rgba(10,25,47,0.1)">
+<span style="display:inline-grid;place-items:center;width:48px;height:48px;border-radius:12px;background:#4F46E5;color:#fff;margin-bottom:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ v.d }}"></path></svg></span>
+<h3 style="margin:0 0 8px;font-size:18px;font-weight:600">{{ v.title }}</h3>
+<p style="margin:0;font-size:14px;color:rgba(10,25,47,0.6)">{{ v.body }}</p>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:28px;align-items:flex-start">
+<span style="white-space:nowrap;flex-shrink:0;padding:8px 16px;background:rgba(79,70,229,0.05);border:1px solid rgba(79,70,229,0.2);border-radius:999px;color:#4F46E5;font-size:14px;font-weight:600">Why Inflow Fusion</span>
+<h2 style="margin:0;font-weight:900;font-size:clamp(32px,4.4vw,48px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">The gap is not capability. It is trust, accessibility and execution.</h2>
+<p style="margin:0;font-size:20px;color:rgba(10,25,47,0.8);text-wrap:pretty">Small and medium-sized businesses are sitting on untapped potential. Inconsistent data, manual processes draining staff time, and no clear view of what is actually happening.</p>
+<p style="margin:0;font-size:18px;color:rgba(10,25,47,0.7);text-wrap:pretty">You know you need to do something. You do not know where to start, and you cannot afford a big consultancy to figure it out for you.</p>
+<p style="margin:0;font-size:18px;color:rgba(10,25,47,0.7);text-wrap:pretty"><strong style="color:#0A192F">You do not need a 50-page strategy report.</strong> You need someone who can diagnose what is broken, build something that works, and explain it in plain language.</p>
+</div></div>
+<div style="margin-top:64px;padding:32px;background:rgba(79,70,229,0.05);border:1px solid rgba(79,70,229,0.2);border-radius:16px;text-align:center">
+<h3 style="margin:0 0 8px;font-size:24px;font-weight:600">Enterprise data engineering, without the enterprise overhead</h3>
+<p style="margin:0 auto;max-width:640px;color:rgba(10,25,47,0.7)">Our team brings hands-on experience from enterprise environments, across SQL, Python, automation, AI integrations and business intelligence, to businesses that need it most.</p>
+</div></div></section>
+
+<section id="services" class="sec-x" style="padding:96px 32px">
+<div style="max-width:1280px;margin:0 auto">
+<div style="text-align:center;margin-bottom:64px;display:flex;flex-direction:column;align-items:center;gap:24px">
+<span style="white-space:nowrap;flex-shrink:0;padding:8px 16px;background:rgba(79,70,229,0.05);border:1px solid rgba(79,70,229,0.2);border-radius:999px;color:#4F46E5;font-size:14px;font-weight:600">Our Expertise</span>
+<h2 style="margin:0;font-weight:900;font-size:clamp(32px,4.4vw,48px);letter-spacing:-0.03em">Solutions built for scale</h2>
+<p style="margin:0;font-size:20px;color:rgba(10,25,47,0.7);max-width:720px">From diagnostic audits to full AI integration, we deliver measurable results.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+<div style="background:#fff;border:1px solid rgba(10,25,47,0.1);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px" style-hover="box-shadow:0 25px 50px -12px rgba(10,25,47,0.25);border-color:rgba(79,70,229,0.3)">
+<span style="display:inline-grid;place-items:center;width:48px;height:48px;border-radius:12px;background:#4F46E5;color:#fff;align-self:flex-start"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ s.d }}"></path></svg></span>
+<h3 style="margin:0;font-size:20px;font-weight:600;line-height:1.25">{{ s.title }}</h3>
+<p style="margin:0;font-size:14px;color:rgba(10,25,47,0.6)">{{ s.body }}</p>
+<ul style="list-style:none;margin:auto 0 0;padding:16px 0 0;border-top:1px solid rgba(10,25,47,0.06);display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ s.points }}" as="p" hint-placeholder-count="3">
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(10,25,47,0.7)"><span style="flex-shrink:0;width:6px;height:6px;border-radius:50%;background:#4F46E5"></span>{{ p }}</li>
+</sc-for>
+</ul>
+</div>
+</sc-for>
+</div>
+<p style="margin:64px auto 0;text-align:center;font-size:18px;color:rgba(10,25,47,0.7);max-width:720px">Everything we build is framed in business language first: time saved, problems solved, revenue protected. We start small, prove value, then scale.</p>
+</div></section>
+
+<section class="sec-x" style="padding:96px 32px;background:#4F46E5">
+<div style="max-width:896px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:32px">
+<h2 style="margin:0;font-weight:900;font-size:clamp(34px,5vw,60px);line-height:1.1;letter-spacing:-0.03em;color:#fff;text-wrap:balance">You know you need this. Let us show you where to start.</h2>
+<p style="margin:0;font-size:22px;color:#fff;max-width:680px;text-wrap:pretty">Book a free consultation. We will diagnose what is broken, show you what is possible, and give you a clear path forward, even if you do not work with us.</p>
+<button onClick="{{ goBook }}" style="font:inherit;font-size:18px;font-weight:600;cursor:pointer;border:0;background:#fff;color:#4F46E5;padding:20px 40px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.3)" style-hover="background:#F1F0FF">Book a Consultation Today<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
+<p style="margin:0;font-size:14px;color:#fff">Free consultation. No sales pitch. Just honest advice about what you actually need.</p>
+</div></section>
+</sc-if>
+
+<sc-if value="{{ isBooking }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+<section class="book-done" style="min-height:70vh;display:grid;place-items:center;padding:64px 32px;background:#4F46E5">
+<div class="book-card" style="max-width:640px;width:100%;box-sizing:border-box;background:#fff;border-radius:24px;padding:48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px">
+<span style="display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:rgba(79,70,229,0.1);color:#4F46E5"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.1V12a10 10 0 11-5.9-9.1M22 4L12 14l-3-3"></path></svg></span>
+<h1 style="margin:0;font-weight:900;font-size:36px;letter-spacing:-0.02em">Request received</h1>
+<p style="margin:0;font-size:18px;color:rgba(10,25,47,0.7)">Thank you. We will review your details and email available time slots within 24 hours.</p>
+<button onClick="{{ goHome }}" style="font:inherit;font-weight:500;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:16px 32px;border-radius:10px" style-hover="background:#4338CA">Return to Home</button>
+</div></section>
+</sc-if>
+<sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+<section class="book-sec" style="padding:72px 32px">
+<div class="book-grid" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:64px">
+<div style="display:flex;flex-direction:column;gap:32px;align-items:flex-start">
+<span style="white-space:nowrap;flex-shrink:0;padding:8px 16px;background:rgba(79,70,229,0.05);border:1px solid rgba(79,70,229,0.2);border-radius:999px;color:#4F46E5;font-size:14px;font-weight:600">Free Consultation</span>
+<h1 style="margin:0;font-weight:900;font-size:clamp(36px,5vw,52px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">Book your free data &amp; AI consultation</h1>
+<p style="margin:0;font-size:20px;color:rgba(10,25,47,0.7)">You know something needs to change. Let us help you figure out where to start and what will actually work for your business.</p>
+<div style="display:flex;flex-direction:column;gap:24px;padding-top:8px">
+<sc-for list="{{ perks }}" as="k" hint-placeholder-count="3">
+<div style="display:flex;gap:16px;align-items:flex-start">
+<span style="flex-shrink:0;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(79,70,229,0.1);color:#4F46E5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.d }}"></path></svg></span>
+<div><div style="font-size:18px;font-weight:600">{{ k.title }}</div><div style="color:rgba(10,25,47,0.6)">{{ k.body }}</div></div>
+</div>
+</sc-for>
+</div></div>
+<form class="book-form" onSubmit="{{ submit }}" style="min-width:0;background:#fff;border:1px solid rgba(10,25,47,0.1);border-radius:24px;padding:32px;box-shadow:0 25px 50px -12px rgba(10,25,47,0.25);display:flex;flex-direction:column;gap:20px;align-self:start">
+<h2 style="margin:0 0 4px;font-size:24px;font-weight:900">Tell us about your business</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+<label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500">First name<input required type="text" placeholder="Jane" style="font:inherit;padding:12px 16px;border:1px solid rgba(10,25,47,0.2);border-radius:10px" style-focus="outline:2px solid #4F46E5;border-color:transparent"></label>
+<label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500">Last name<input required type="text" placeholder="Smith" style="font:inherit;padding:12px 16px;border:1px solid rgba(10,25,47,0.2);border-radius:10px" style-focus="outline:2px solid #4F46E5;border-color:transparent"></label>
+</div>
+<label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500">Work email<input required type="email" placeholder="jane@company.com" style="font:inherit;padding:12px 16px;border:1px solid rgba(10,25,47,0.2);border-radius:10px" style-focus="outline:2px solid #4F46E5;border-color:transparent"></label>
+<label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500">Company name<input required type="text" placeholder="Your Company Ltd" style="font:inherit;padding:12px 16px;border:1px solid rgba(10,25,47,0.2);border-radius:10px" style-focus="outline:2px solid #4F46E5;border-color:transparent"></label>
+<label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500">Primary challenge
+<select required style="font:inherit;padding:12px 16px;border:1px solid rgba(10,25,47,0.2);border-radius:10px;background:#fff">
+<option value="">What brings you here?</option><option>Need a data audit</option><option>Manual processes need automation</option><option>Need better dashboards and reporting</option><option>Exploring AI integration</option><option>Other / not sure</option></select></label>
+<label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500">Additional details<textarea rows="4" placeholder="Tell us more about your data challenges..." style="font:inherit;padding:12px 16px;border:1px solid rgba(10,25,47,0.2);border-radius:10px;resize:none" style-focus="outline:2px solid #4F46E5;border-color:transparent"></textarea></label>
+<button type="submit" style="font:inherit;font-size:18px;font-weight:500;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:16px 32px;border-radius:10px;box-shadow:0 20px 25px -5px rgba(79,70,229,0.25)" style-hover="background:#4338CA">Request Consultation</button>
+<p style="margin:0;text-align:center;font-size:12px;color:rgba(10,25,47,0.6)">We will respond within 24 hours.</p>
+</form>
+</div></section>
+</sc-if>
+</sc-if>
+
+<footer class="ft" style="background:#0A192F;color:#fff;padding:64px 32px 32px">
+<div style="max-width:1280px;margin:0 auto">
+<div class="ft-grid" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:48px;margin-bottom:48px">
+<div class="ft-brand" style="min-width:0"><div style="display:flex;align-items:center;gap:1px;font-family:'Inter',-apple-system,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.03em;margin-bottom:16px">Infl<svg width="22" height="22" viewBox="0 0 48 48" style="flex-shrink:0;margin-top:4px"><circle cx="24" cy="24" r="17" fill="none" stroke="#fff" stroke-width="8"></circle><circle cx="24" cy="24" r="5" fill="#00E5FF"></circle></svg>w Fusion</div>
+<p style="margin:0;max-width:420px;color:rgba(255,255,255,0.75)">Data and AI consultancy. We diagnose what is broken, build what works, and explain it in plain language.</p></div>
+<div><div style="font-weight:500;margin-bottom:16px">Services</div><div style="display:flex;flex-direction:column;gap:8px;color:rgba(255,255,255,0.75)"><span>Data Audits</span><span>Automation</span><span>Dashboards</span><span>AI Integration</span></div></div>
+<div><div style="font-weight:500;margin-bottom:16px">Connect</div><a href="mailto:hello@inflowfusion.com" style="color:rgba(255,255,255,0.75)" style-hover="color:#00E5FF">hello@inflowfusion.com</a><div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap"><a href="#" aria-label="LinkedIn" style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,0.25);display:grid;place-items:center;color:#fff" style-hover="background:#fff;color:#0A192F;border-color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.84-2 3.8-2 4.06 0 4.8 2.67 4.8 6.14V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"></path></svg></a><a href="#" aria-label="X" style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,0.25);display:grid;place-items:center;color:#fff" style-hover="background:#fff;color:#0A192F;border-color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a><a href="#" aria-label="Instagram" style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,0.25);display:grid;place-items:center;color:#fff" style-hover="background:#fff;color:#0A192F;border-color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></a></div></div>
+</div>
+<div style="padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);font-size:14px;color:rgba(255,255,255,0.7)">&copy; 2026 Inflow Fusion. All rights reserved.</div>
+</div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { view: 'home', sent: false, menu: false };
+  componentDidMount() { this._r = () => { if (window.innerWidth > 640 && this.state.menu) this.setState({ menu: false }); }; window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  go(view) { this.setState({ view, sent: false, menu: false }); window.scrollTo(0, 0); }
+  renderVals() {
+    const v = this.state.view;
+    return {
+      menuOpen: this.state.menu && v === 'home', toggleMenu: () => this.setState(s => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
+      isHome: v === 'home', isBooking: v === 'book', sent: this.state.sent, notSent: !this.state.sent,
+      goBook: (e) => { e && e.preventDefault(); this.go('book'); },
+      goHome: (e) => { e && e.preventDefault(); this.go('home'); },
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); window.scrollTo(0, 0); },
+      kpis: [
+        { label: 'Revenue', value: '£84.2k', delta: '+12% vs last month', spark: '0,22 15,18 30,20 45,12 60,14 80,8 100,3' },
+        { label: 'Open orders', value: '132', delta: '9 need action', spark: '0,10 15,14 30,8 45,16 60,12 80,18 100,14' },
+        { label: 'Hours saved', value: '46 hrs', delta: 'this month', spark: '0,24 15,21 30,18 45,16 60,11 80,7 100,3' }
+      ],
+      heroCards: [
+        { title: 'Connected Data', body: 'Real-time insights, not Excel exports', d: 'M12 8c4.4 0 8-1.1 8-2.5S16.4 3 12 3 4 4.1 4 5.5 7.6 8 12 8zM4 5.5v13C4 19.9 7.6 21 12 21s8-1.1 8-2.5v-13M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5', chip: '#4F46E5', ink: '#fff', bg: 'rgba(79,70,229,0.05)', border: 'rgba(79,70,229,0.2)' },
+        { title: 'Automated Workflows', body: 'Save hours every week', d: 'M3 3h6v6H3zM15 15h6v6h-6zM6 9v3a3 3 0 003 3h6', chip: '#4F46E5', ink: '#fff', bg: 'rgba(79,70,229,0.06)', border: 'rgba(79,70,229,0.3)' },
+        { title: 'Scalable Infrastructure', body: 'Built to grow with your business', d: 'M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9', chip: '#4F46E5', ink: '#fff', bg: 'rgba(79,70,229,0.05)', border: 'rgba(79,70,229,0.2)' }
+      ],
+      values: [
+        { title: 'Plain Language', body: 'No jargon. No corporate speak. Just clear explanations you can act on.', d: 'M12 22a10 10 0 100-20 10 10 0 000 20zM12 18a6 6 0 100-12 6 6 0 000 12zM12 14a2 2 0 100-4 2 2 0 000 4z' },
+        { title: 'Enterprise-Grade, SMB-Friendly', body: 'Real enterprise engineering experience, without the enterprise price tag or complexity.', d: 'M22 7l-8.5 8.5-5-5L2 17M16 7h6v6' },
+        { title: 'Built for SMBs', body: 'We understand your constraints and design solutions that fit your reality.', d: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8' },
+        { title: 'Execution, Not Reports', body: 'We diagnose, build and deploy. No endless discovery phases.', d: 'M12 15a7 7 0 100-14 7 7 0 000 14zM8.2 13.9L7 23l5-3 5 3-1.2-9.1' }
+      ],
+      services: [
+        { title: 'Data Audits', body: 'We map how your data flows, find where it breaks down, and show you exactly what needs to change and why. A low-risk entry point.', points: ['Diagnose what is broken', 'Identify quick wins', 'Clear action roadmap'], d: 'M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.3-4.3' },
+        { title: 'Automation & Workflow Builds', body: 'We replace manual processes with automated workflows using Power Automate, Python and AI integrations.', points: ['Hours saved, errors removed', 'Connect your systems', 'Scale without more hires'], d: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z' },
+        { title: 'Dashboards & Reporting', body: 'A live, connected view of your business, built around the decisions you actually need to make. Not Friday spreadsheets by email.', points: ['Real-time visibility', 'Consistent numbers', 'Decide with confidence'], d: 'M3 3v18h18M7 16V10M12 16V6M17 16v-4' },
+        { title: 'AI Integration', body: 'We find where AI meaningfully reduces workload, such as document processing, client communication triage and summarisation.', points: ['Practical applications', 'Explainable, not experimental', 'Fits your existing systems'], d: 'M12 8V4M8 8h8a3 3 0 013 3v6a3 3 0 01-3 3H8a3 3 0 01-3-3v-6a3 3 0 013-3zM9 14h.01M15 14h.01' }
+      ],
+      perks: [
+        { title: '45-minute session', body: 'A focused look at your current data challenges and opportunities.', d: 'M3 4h18v18H3zM16 2v4M8 2v4M3 10h18' },
+        { title: 'No commitment required', body: 'Learn what is possible with no pressure to proceed.', d: 'M22 11.1V12a10 10 0 11-5.9-9.1M22 4L12 14l-3-3' },
+        { title: 'Honest advice', body: 'Clear next steps, even if you do not work with us.', d: 'M12 22a10 10 0 100-20 10 10 0 000 20zM12 6v6l4 2' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
