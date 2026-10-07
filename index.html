@@ -17,17 +17,16 @@
 <nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(10,25,47,0.1)">
 <div class="nav-in" style="max-width:1280px;margin:0 auto;padding:0 32px;min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
 <a class="nav-logo" href="#" onClick="{{ goHome }}" style="white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:1px;font-family:'Inter',-apple-system,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.03em;color:#0A192F">Infl<svg width="22" height="22" viewBox="0 0 48 48" style="flex-shrink:0;margin-top:4px"><circle cx="24" cy="24" r="17" fill="none" stroke="#0A192F" stroke-width="8"></circle><circle cx="24" cy="24" r="5" fill="#4F46E5"></circle></svg>w Fusion</a>
-<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div class="nav-links" style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
-<a class="nav-link" href="#about" style="color:#0A192F" style-hover="color:#4F46E5">About</a>
-<a class="nav-link" href="#services" style="color:#0A192F" style-hover="color:#4F46E5">Services</a>
-<button class="nav-cta" onClick="{{ goBook }}" style="font:inherit;font-weight:500;white-space:nowrap;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:12px 24px;border-radius:10px;box-shadow:0 10px 15px -3px rgba(79,70,229,0.25)" style-hover="background:#4338CA">Book a Consultation</button>
+<a class="nav-link" href="#" onClick="{{ goHome }}" style="color:#0A192F" style-hover="color:#4F46E5">Home</a>
+<a class="nav-link" href="#about" onClick="{{ goAbout }}" style="color:#0A192F" style-hover="color:#4F46E5">About</a>
+<a class="nav-link" href="#services" onClick="{{ goServices }}" style="color:#0A192F" style-hover="color:#4F46E5">Services</a>
+<button class="nav-cta" onClick="{{ goBook }}" style="font:inherit;font-weight:500;white-space:nowrap;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:12px 24px;border-radius:10px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 15px -3px rgba(79,70,229,0.25)" style-hover="background:#4338CA">Book a Consultation<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
 </div>
-<button class="nav-burger" aria-label="Menu" onClick="{{ toggleMenu }}" style="display:none;width:44px;height:44px;border:1px solid rgba(10,25,47,0.15);background:#fff;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0"><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span></button>
-</sc-if>
+<button class="nav-burger" aria-label="Menu" onClick="{{ toggleMenu }}" style="display:none;width:44px;height:44px;border:0;background:transparent;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0"><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span><span style="width:20px;height:2px;background:#0A192F;border-radius:2px"></span></button>
 </div>
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-<div class="nav-panel" style="position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;gap:4px;padding:8px 16px 20px;border-bottom:1px solid rgba(10,25,47,0.1);background:#fff;box-shadow:0 20px 30px -10px rgba(10,25,47,0.15)"><a href="#about" onClick="{{ closeMenu }}" style="color:#0A192F;font-weight:500;padding:14px 8px">About</a><a href="#services" onClick="{{ closeMenu }}" style="color:#0A192F;font-weight:500;padding:14px 8px;border-top:1px solid rgba(10,25,47,0.08)">Services</a><button onClick="{{ goBook }}" style="font:inherit;font-weight:500;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:14px 24px;border-radius:10px;margin-top:8px">Book a Consultation</button></div>
+<div class="nav-panel" style="position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;gap:4px;padding:8px 16px 20px;border-bottom:1px solid rgba(10,25,47,0.1);background:#fff;box-shadow:0 20px 30px -10px rgba(10,25,47,0.15)"><a href="#" onClick="{{ goHome }}" style="color:#0A192F;font-weight:500;padding:14px 8px">Home</a><a href="#about" onClick="{{ goAbout }}" style="color:#0A192F;font-weight:500;padding:14px 8px;border-top:1px solid rgba(10,25,47,0.08)">About</a><a href="#services" onClick="{{ goServices }}" style="color:#0A192F;font-weight:500;padding:14px 8px;border-top:1px solid rgba(10,25,47,0.08)">Services</a><button onClick="{{ goBook }}" style="font:inherit;font-weight:500;cursor:pointer;border:0;background:#4F46E5;color:#fff;padding:14px 24px;border-radius:10px;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px">Book a Consultation<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button></div>
 </sc-if>
 </nav>
 
@@ -197,13 +196,25 @@ class Component extends DCLogic {
   componentDidMount() { this._r = () => { if (window.innerWidth > 640 && this.state.menu) this.setState({ menu: false }); }; window.addEventListener('resize', this._r); }
   componentWillUnmount() { window.removeEventListener('resize', this._r); }
   go(view) { this.setState({ view, sent: false, menu: false }); window.scrollTo(0, 0); }
+  goSection(id) {
+    const scroll = () => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
+    if (this.state.view !== 'home') {
+      this.setState({ view: 'home', sent: false, menu: false });
+      setTimeout(scroll, 50);
+    } else {
+      this.setState({ menu: false });
+      scroll();
+    }
+  }
   renderVals() {
     const v = this.state.view;
     return {
-      menuOpen: this.state.menu && v === 'home', toggleMenu: () => this.setState(s => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
+      menuOpen: this.state.menu, toggleMenu: () => this.setState(s => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
       isHome: v === 'home', isBooking: v === 'book', sent: this.state.sent, notSent: !this.state.sent,
       goBook: (e) => { e && e.preventDefault(); this.go('book'); },
       goHome: (e) => { e && e.preventDefault(); this.go('home'); },
+      goAbout: (e) => { e && e.preventDefault(); this.goSection('about'); },
+      goServices: (e) => { e && e.preventDefault(); this.goSection('services'); },
       submit: (e) => { e.preventDefault(); this.setState({ sent: true }); window.scrollTo(0, 0); },
       kpis: [
         { label: 'Revenue', value: '£84.2k', delta: '+12% vs last month', spark: '0,22 15,18 30,20 45,12 60,14 80,8 100,3' },
